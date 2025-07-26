@@ -1,0 +1,164 @@
+@import url("https://fonts.googleapis.com/css2?family=Expletus+Sans:ital,wght@0,400..700;1,400..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+:root {
+  --background-color: oklch(
+    0.7 0.1135 205.41
+  ); /*Predefined variable to always call on for BG-color */
+}
+@keyframes gradient {
+  /*Animation for the gradient */
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+* {
+  margin: 0; /* These two make the entire page get up to the edge of the screen.*/
+  padding: 0;
+}
+h1 {
+  font-family: Expletus Sans;
+  font-size: 60px;
+  color: rgb(255, 255, 255);
+  position: relative;
+  display: inline-block;
+  letter-spacing: 0.2rem;
+  text-shadow:
+    -4px -4px 0 #000000,
+    1px 1px 0 #000000,
+    -1px 1px 0 #000000,
+    1px -1px 0 #000000;
+  &:after {
+    content: "";
+    position: absolute;
+    inset: -5px;
+    background: linear-gradient(
+      315deg,
+      #00ff9f,
+      #00b8ff,
+      #001eff,
+      #bd00ff,
+      #d600ff
+    );
+    mix-blend-mode: lighten;
+  }
+}
+h2 {
+}
+
+body {
+  background: linear-gradient(
+    -45deg,
+    #12b8eb,
+    #194695,
+    #2d6695,
+    #137257
+  ); /* Defines background gradient */
+  background-size: 500% 100%; /*Makes gradient larger */
+  animation: gradient 7s ease infinite; /*calls back the 'gradient' variable from the @keyframes element. animation speed. makes it go forever. */
+  min-height: 100vh; /* Sets the minimum of the page height to be 100% of the viewport height */
+  display: grid; /*Converts layout to a grid-based one */
+  grid-template-columns: 10vw 1fr 10vw; /*Defines the width of each column. 10% of viewport width and 1/1 fractional unit. Allows the center be defined by the size of the margins, allowing it use as much space as it wants. */
+  grid-template-rows: auto 1fr auto; /*Defines height of the rows. Similar concept to columns */
+  grid-template-areas: /*Defines what each tile of the grid uses for its styling */
+    "navbar navbar navbar"
+    "aside1 main aside2"
+    "aside1 footer aside2";
+}
+nav {
+  height: 3rem; /*sets a defined responsive height */
+  font-size: xx-large; /*Large font size for the navbar */
+  top: 0;
+  position: sticky; /*Keeps the position glued to the top of the screen */
+  grid-area: navbar; /*Name for this block to be used in grid-template-areas element*/
+  background-color: oklch(
+    from var(--background-color) calc(l * 1.5) c h
+  ); /*Changes the color of the BG by calling back the root variable, and changing color by calculating a new lumina number */
+}
+.leftnav {
+  float: right; /* */
+  transform: scale(-1, 1); /*Mirrors text */
+}
+.aside1 {
+  height: calc(
+    100vh - 3rem
+  ); /*Calculates height by subtracting the height of the navbar from the viewport height as so they don't overlap */
+  top: 3rem; /*Sets starting height of the navbar from 3rems (the height of the navbar) down from the top */
+  position: sticky; /*Keeps the position glued to the top of the screen */ /* */
+  align-self: start; /*  */
+  grid-area: aside1; /*Name for this block to be used in grid-template-areas element*/
+  opacity: 0; /*Makes sidebar invisible to let animated gradient show through */
+}
+.aside2 {
+  height: calc(
+    100vh - 3rem
+  ); /*Calculates height by subtracting the height of the navbar from the viewport height as so they don't overlap */
+  top: 3rem; /*Sets starting height of the navbar from 3rems (the height of the navbar) down from the top */
+  position: sticky; /*Keeps the position glued to the top of the screen */
+  align-self: start; /*  */
+  grid-area: aside2; /*Name for this block to be used in grid-template-areas element*/
+  opacity: 0; /*Makes sidebar invisible to let animated gradient show through */
+}
+main {
+  grid-area: main; /*Name for this block to be used in grid-template-areas element*/
+  padding: 1em;
+  background-color: oklch(0.9748 0 181); /*Normal use of OKLCH*/
+}
+footer {
+  grid-area: footer; /*Name for this block to be used in grid-template-areas element*/
+  background-color: var(
+    --background-color
+  ); /* Calls back root variable for background-color  */
+  padding: 2em;
+}
+
+.species {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+.pokepic {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 65px;
+}
+.dexnum {
+  margin: 0;
+  padding: 5px;
+  text-align: center;
+}
+label {
+  border: 1px solid #ddd;
+  background-color: #f0f0f0;
+  height: 120px;
+  width: 120px;
+  display: block;
+  transition: background-color 0.3s ease-in;
+}
+label:hover {
+  filter: contrast(120%);
+  cursor: pointer;
+}
+
+input:checked ~ label {
+  background-color: #ffffff18;
+}
+.checkboxes {
+  display: inline-grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  background: linear-gradient(-45deg, #85eb12, #2aa03d, #20e4b9, #137257);
+  background-size: 500% 100%;
+  animation: gradient 10s ease infinite;
+  padding: 0px;
+  margin: 0px;
+  height: auto;
+}
+main > div {
+  border: 3px solid red;
+}
