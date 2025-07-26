@@ -1,11 +1,17 @@
 {
   "image": "mcr.microsoft.com/devcontainers/universal:2",
-  "extensions": [
-        "esbenp.prettier-vscode"
-      ],
-  "settings": {
+  "forwardPorts": [5500], // Forward Live Server's default port
+        "customizations": {
+            "vscode": {
+                "extensions": [
+                    "ritwickdey.liveserver",
+                            "esbenp.prettier-vscode"
+                ]
+            },
+            "settings": {
         "editor.formatOnSave": true,
         "editor.defaultFormatter": "esbenp.prettier-vscode"
-      },
+      }
+        },
   "features": {}
 }
